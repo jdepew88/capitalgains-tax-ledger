@@ -1,6 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "joyces-home-ledger",
+  "name": "capitalgains",
+  // Served only at https://capitalgains.joeydepew.workers.dev (protected by Cloudflare Access).
+  "workers_dev": true,
+  // Version preview URLs are off so there is no second, unprotected hostname.
+  "preview_urls": false,
   "main": "worker/index.ts",
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
@@ -14,16 +18,15 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "joyces-home-ledger",
-      // Replace with the id printed by `npx wrangler d1 create joyces-home-ledger`.
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_name": "capitalgains-ledger",
+      "database_id": "9d11cdf9-2c4d-4774-a75c-69e4ffa0c359",
       "migrations_dir": "migrations"
     }
   ],
   "r2_buckets": [
     {
       "binding": "DOCS",
-      "bucket_name": "joyces-home-ledger-docs"
+      "bucket_name": "capitalgains-ledger-documents"
     }
   ],
   "observability": { "enabled": true }
