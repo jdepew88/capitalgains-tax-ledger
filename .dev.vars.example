@@ -1,0 +1,5 @@
+# Copy to .dev.vars for local development. Never commit .dev.vars.
+# Dev mode only works when the request host is localhost / 127.0.0.1.
+AUTH_MODE=dev
+DEV_USER_EMAIL=you@example.com
+ALLOWED_EMAILS=you@example.com,joyce@example.com

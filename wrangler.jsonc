@@ -1,0 +1,34 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "joyces-home-ledger",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    // Every request (including the HTML/JS) passes through the Worker's auth check first.
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "joyces-home-ledger",
+      // Replace with the id printed by `npx wrangler d1 create joyces-home-ledger`.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "DOCS",
+      "bucket_name": "joyces-home-ledger-docs"
+    }
+  ],
+  "observability": { "enabled": true }
+  // Secrets (set with `npx wrangler secret put NAME`, never committed):
+  //   ACCESS_TEAM_DOMAIN  e.g. yourteam.cloudflareaccess.com
+  //   ACCESS_AUD          the Access application's Audience (AUD) tag
+  //   ALLOWED_EMAILS      comma-separated allowlist, e.g. you@example.com,joyce@example.com
+}
